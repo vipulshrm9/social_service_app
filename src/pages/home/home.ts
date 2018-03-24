@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController,Slides } from 'ionic-angular';
 import { RegisterPage } from "../register/register";
 
 @Component({
@@ -7,15 +7,17 @@ import { RegisterPage } from "../register/register";
   templateUrl: 'home.html'
 })
 export class HomePage {
-S
+  @ViewChild('slider') slider: Slides;
+  page=0;
 
   constructor(public navCtrl: NavController) {
-
-
   }
 
   painting(){
   this.navCtrl.push(RegisterPage);
   }
 
+  selectedTab(index) {
+  this.slider.slideTo(index);
+  }
 }

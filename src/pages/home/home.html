@@ -5,9 +5,23 @@
     </button>
     <ion-title><h4 class="title">Social Service Club</h4></ion-title>
   </ion-navbar>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="page">
+     <ion-segment-button value="upcoming events" (click)="selectedTab(0)">
+       Upcoming Events
+     </ion-segment-button>
+     <ion-segment-button value="past events" (click)="selectedTab(1)">
+       Past Events
+     </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="page">
+
+ <ion-slides #slider>
+   <ion-slide>
     <ion-card (click)="painting()">
       <ion-card-header>
       Painting Competetion
@@ -27,5 +41,11 @@
       This Event is to be held on Republic day 
       </ion-card-content>
     </ion-card>
+  </ion-slide>
 
+  <ion-slide>
+    <h1>Tab 2</h1>
+  </ion-slide>
+  
+ </ion-slides>
 </ion-content>
