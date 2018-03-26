@@ -8,11 +8,11 @@
 
   <ion-toolbar>
     <ion-segment [(ngModel)]="page">
-     <ion-segment-button value="upcoming events" (click)="selectedTab(0)">
-       Upcoming Events
+     <ion-segment-button value="upcoming events" (click)="selectedTab(0)" style="color: #691108">
+       <font size="3" class="a">Upcoming Events</font>
      </ion-segment-button>
-     <ion-segment-button value="past events" (click)="selectedTab(1)">
-       Past Events
+     <ion-segment-button value="past events" (click)="selectedTab(1)" style="color: #691108">
+       <font size="3" class="a">Past Events</font>
      </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -44,8 +44,17 @@
   </ion-slide>
 
   <ion-slide>
-    <h1>Tab 2</h1>
+     <ion-card>
+      <ion-card-header>
+      Rangoli Competetion
+      </ion-card-header>
+
+      <ion-card-content>
+      This Event is to be held on childrens day 
+      </ion-card-content>
+    </ion-card>
+
   </ion-slide>
-  
+
  </ion-slides>
 </ion-content>
