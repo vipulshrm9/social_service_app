@@ -7,29 +7,87 @@
 <ion-header>
 
   <ion-navbar>
+  <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Register</ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding class="page">
-<form>
+<form [formGroup]="myform">
+
+     
+      <ion-item>
+       <ion-label floating> Name</ion-label>
+       <ion-input formControlName="name" type="text" name="title"> </ion-input>
+      </ion-item>
+        
+    <div class="validation-errors">
+     <ng-container *ngFor="let validation of validation_messages.name" >
+      <div class="error-message" *ngIf="myform.get('name').hasError(validation.type) && (myform.get('name').dirty || myform.get('name').touched)">
+       {{ validation.message }}
+      </div>
+     </ng-container>  
+    </div>
+
+  
+      <ion-item>
+       <ion-label floating>Roll no.</ion-label>
+       <ion-input formControlName="roll_no" type="text" name="title"> </ion-input>
+      </ion-item>
+
+      <div class="validation-errors">
+     <ng-container *ngFor="let validation of validation_messages.roll_no" >
+      <div class="error-message" *ngIf="myform.get('roll_no').hasError(validation.type) && (myform.get('roll_no').dirty || myform.get('roll_no').touched)">
+       {{ validation.message }}
+      </div>
+     </ng-container>  
+    </div>
+
+
+     <ion-item>
+       <ion-label floating>Phone</ion-label>
+       <ion-input formControlName="phone" type="tel" name="title"> </ion-input>
+      </ion-item>
+      
+      <div class="validation-errors">
+     <ng-container *ngFor="let validation of validation_messages.phone" >
+      <div class="error-message" *ngIf="myform.get('phone').hasError(validation.type) && (myform.get('phone').dirty || myform.get('phone').touched)">
+       {{ validation.message }}
+      </div>
+     </ng-container>  
+    </div>
+      
+
+      <ion-item>
+       <ion-label floating>E-mail</ion-label>
+       <ion-input formControlName="email" type="text" name="title"> </ion-input>
+      </ion-item>
+      <ion-item><small>Send OTP</small></ion-item>
+
+
+      <div class="validation-errors">
+     <ng-container *ngFor="let validation of validation_messages.email" >
+      <div class="error-message" *ngIf="myform.get('email').hasError(validation.type) && (myform.get('email').dirty || myform.get('email').touched)">
+       {{ validation.message }}
+      </div>
+     </ng-container>  
+    </div>
+
     <ion-item>
-      <ion-input type="text" placeholder="NAME"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="Roll no."></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="E-Mail"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="PHONE"></ion-input>
-    </ion-item>
-      <button ion-button><small>Send OTP</small></button>
-    <ion-item>
-      <ion-input type="text" placeholder="OTP"></ion-input>
-    </ion-item>  
-    <button ion-button block class="a">Register</button>
+       <ion-label floating>Enter OTP</ion-label>
+       <ion-input  type="text" name="title"> </ion-input>
+      </ion-item>      
+
+     <br>
+     <button ion-button type="submit" block [disabled]="!myform.valid">Register</button>
+
+  
+     </form>
+
 
     <br>
     <h5 class="a">Rules</h5>
@@ -37,6 +95,5 @@
       <li>This is Rule one. </li>
       <li>This is Rule two</li>
     </ul>   
- </form>
 
 </ion-content>

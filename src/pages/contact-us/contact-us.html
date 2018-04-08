@@ -20,33 +20,81 @@
 <ion-content padding class="page">
 
 <h6 class="d">Drop a Mail</h6>
-<form> 
-    <ion-item>
-      <ion-input type="text" placeholder="NAME"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="E-Mail"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="PHONE"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="Message"></ion-input>
-    </ion-item>
+
+
+<form [formGroup]="myform">
+     
+      <ion-item>
+       <ion-label floating> Name</ion-label>
+       <ion-input formControlName="name" type="text" name="title"> </ion-input>
+      </ion-item>
+        
+    <div class="validation-errors">
+     <ng-container *ngFor="let validation of validation_messages.name" >
+      <div class="error-message" *ngIf="myform.get('name').hasError(validation.type) && (myform.get('name').dirty || myform.get('name').touched)">
+       {{ validation.message }}
+      </div>
+     </ng-container>  
+    </div>
+
+  
+      <ion-item>
+       <ion-label floating>E-mail</ion-label>
+       <ion-input formControlName="email" type="text" name="title"> </ion-input>
+      </ion-item>
+
+      <div class="validation-errors">
+     <ng-container *ngFor="let validation of validation_messages.email" >
+      <div class="error-message" *ngIf="myform.get('email').hasError(validation.type) && (myform.get('email').dirty || myform.get('email').touched)">
+       {{ validation.message }}
+      </div>
+     </ng-container>  
+    </div>
+    
+
+  
+      <ion-item>
+       <ion-label floating>Phone</ion-label>
+       <ion-input formControlName="phone" type="tel" name="title"> </ion-input>
+      </ion-item>
+
+      <div class="validation-errors">
+     <ng-container *ngFor="let validation of validation_messages.phone" >
+      <div class="error-message" *ngIf="myform.get('phone').hasError(validation.type) && (myform.get('phone').dirty || myform.get('phone').touched)">
+       {{ validation.message }}
+      </div>
+     </ng-container>  
+    </div>
+     
+
+    
+      <ion-item>
+       <ion-label floating>Message</ion-label>
+       <ion-input formControlName="message" type="text" name="title"> </ion-input>
+      </ion-item>
+
+      <div class="validation-errors">
+     <ng-container *ngFor="let validation of validation_messages.message" >
+      <div class="error-message" *ngIf="myform.get('message').hasError(validation.type) && (myform.get('message').dirty || myform.get('message').touched)">
+       {{ validation.message }}
+      </div>
+     </ng-container>  
+    </div>
+      
+
+     <br>
+     <button ion-button type="submit" block [disabled]="!myform.valid">Submit</button>
+
+  
 </form>
 
-<a href="mailto:someone@example.com?Subject=Hello%20again" target="_top">Send Mail</a>
-<br>
-<br>
-<button ion-button class="d" block>Submit</button>
+
 
 <br>  
 <br>
 <h6>Phone : <a href="tel:+91-9998-888822" style="color: #000000"><ion-icon name="call" class="a"></ion-icon>     +91-9998-888822</a></h6>
 <h6>E-mail : <a href="mailto:social_service_club@gmail.com?Subject=Hello%20again" target="_top" style="color: #000000">
 <ion-icon name="mail" class="a"></ion-icon>     social_service_club@gmail.com</a></h6>
-
-<h6>E-Mail : <ion-icon name="mail" class="a"></ion-icon>  social_service_club@gmail.com</h6>
 
 
 
