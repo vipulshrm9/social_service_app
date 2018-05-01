@@ -9,10 +9,10 @@
   <ion-toolbar>
     <ion-segment [(ngModel)]="page">
      <ion-segment-button value="upcoming events" (click)="selectedTab(0)" style="color: #691108">
-       <font size="3" class="a">Upcoming Events</font>
+       <font size="2" class="a">Upcoming Events</font>
      </ion-segment-button>
      <ion-segment-button value="past events" (click)="selectedTab(1)" style="color: #691108">
-       <font size="3" class="a">Past Events</font>
+       <font size="2" class="a">Past Events</font>
      </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -22,35 +22,30 @@
 
  <ion-slides #slider>
    <ion-slide>
-    <ion-card (click)="painting()">
+   <div  *ngFor="let event of events">
+     <ion-card (click)="painting(event.id)">
       <ion-card-header>
-      Painting Competetion
+      {{event.title}}
       </ion-card-header>
-
       <ion-card-content>
-      This Event is to be held on independence day 
+      <p>{{event.venue}}</p> 
+      <p>{{event.date}}</p> 
       </ion-card-content>
+      
     </ion-card>
+   </div>
+    
 
-    <ion-card>
-      <ion-card-header>
-      Poetry Competetion
-      </ion-card-header>
-
-      <ion-card-content>
-      This Event is to be held on Republic day 
-      </ion-card-content>
-    </ion-card>
+    
   </ion-slide>
 
   <ion-slide>
      <ion-card>
       <ion-card-header>
-      Rangoli Competetion
+      No past events found !!!
       </ion-card-header>
 
       <ion-card-content>
-      This Event is to be held on childrens day 
       </ion-card-content>
     </ion-card>
 

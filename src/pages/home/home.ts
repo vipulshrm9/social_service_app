@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController,Slides } from 'ionic-angular';
+import { NavController,Slides,NavParams } from 'ionic-angular';
 import { RegisterPage } from "../register/register";
+import { EventsService } from '../../services/events.service';
 
 @Component({
   selector: 'page-home',
@@ -10,11 +11,23 @@ export class HomePage {
   @ViewChild('slider') slider: Slides;
   page=0;
 
-  constructor(public navCtrl: NavController) {
+  events: Events[];
+
+  constructor(public navCtrl: NavController,private eventsService: EventsService) {
   }
 
-  painting(){
-  this.navCtrl.push(RegisterPage);
+  ionViewDidEnter(){
+    this.eventsService.eventList()
+     .subscribe(
+      (events: Events[]) => this.events = events,
+      (error: Response) => console.log(error)
+     );
+  }
+
+  painting(id){
+  this.navCtrl.push(RegisterPage,{
+    value: id,
+  });
   }
 
   selectedTab(index) {
