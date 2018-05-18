@@ -11,7 +11,7 @@ export class HomePage {
   @ViewChild('slider') slider: Slides;
   page=0;
 
-  events: Events[];
+  events: EventsService[];
 
   constructor(public navCtrl: NavController,private eventsService: EventsService) {
   }
@@ -19,7 +19,7 @@ export class HomePage {
   ionViewDidEnter(){
     this.eventsService.eventList()
      .subscribe(
-      (events: Events[]) => this.events = events,
+      (events: EventsService[]) => this.events = events,
       (error: Response) => console.log(error)
      );
   }

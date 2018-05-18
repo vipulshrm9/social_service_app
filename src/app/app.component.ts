@@ -41,9 +41,20 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
+    // openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.push(page.component);
-  }
+    // this.nav.push(page.component);
+    //   }
+
+    openPage(page)  {
+   if(page.title=='Members')
+   this.nav.push(MembersPage);
+
+   else if(page.title=='About Us')
+   this.nav.push(AboutUsPage);
+
+   else if(page.title=='Contact Us')
+   this.nav.push(ContactUsPage);
+   } 
 }

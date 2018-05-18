@@ -12,14 +12,16 @@
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title *ngFor="let event of event">{{event.title}}</ion-title>
+    <ion-title *ngFor="let event of event"><h4 class="title">{{event.title}}</h4></ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding class="page"  *ngFor="let event of event">
+<br>
+<br>
 <form [formGroup]="myform">
 
-     
+    
       <ion-item>
        <ion-label floating> Name</ion-label>
        <ion-input formControlName="name" type="text" name="title"> </ion-input>
